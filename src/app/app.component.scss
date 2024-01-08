@@ -1,0 +1,19 @@
+@import "primeflex/primeflex.scss";
+
+nav {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header {
+  border-bottom: 1px solid lightgray;
+  position: sticky;
+  top: 0;
+
+  h1 {
+    margin: 0;
+  }
+}

@@ -1,0 +1,47 @@
+<div class="new-todo">
+  <div class="head-wrapper">
+    <h3>New Todo</h3>
+    <div class="is-completed flex align-items-center">
+      <label class="text-sm mr-1" for="completed">Completed</label>
+      <p-checkbox
+        [(ngModel)]="isCompleted"
+        [binary]="true"
+        inputId="completed"
+      ></p-checkbox>
+    </div>
+  </div>
+  <input
+    class="p-inputtext-sm"
+    type="text"
+    placeholder="Todo name"
+    pInputText
+    [(ngModel)]="todoName"
+  />
+  <textarea
+    class="p-inputtext-sm"
+    rows="5"
+    cols="30"
+    pInputTextarea
+    [(ngModel)]="todoBody"
+    [autoResize]="true"
+    placeholder="Todo description"
+  ></textarea>
+  <span class="p-buttonset">
+    <button
+      class="p-button-sm p-button-text"
+      pButton
+      pRipple
+      label="Save"
+      icon="pi pi-check"
+      (click)="save()"
+    ></button>
+    <button
+      class="p-button-sm p-button-danger p-button-text"
+      pButton
+      pRipple
+      label="Cancel"
+      icon="pi pi-times"
+      (click)="cancel()"
+    ></button>
+  </span>
+</div>

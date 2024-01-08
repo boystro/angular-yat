@@ -1,0 +1,89 @@
+<div class="card">
+  <div class="flex align-items-center justify-content-between">
+    <div class="flex">
+      <p-checkbox
+        *ngIf="componentState != 1"
+        [(ngModel)]="updateValue.isDone"
+        [binary]="true"
+        (onChange)="update()"
+      ></p-checkbox>
+      <h4 *ngIf="componentState != 1" class="m-0 text-lg ml-2" #todoTitle>
+        {{ todo.title }}
+      </h4>
+      <input
+        *ngIf="componentState == 1"
+        type="text"
+        pInputText
+        [(ngModel)]="updateValue.title"
+      />
+    </div>
+    <div class="action">
+      <!-- Edit Mode  / state 1 -->
+      <p-button
+        *ngIf="componentState == 1"
+        icon="pi pi-check"
+        [rounded]="true"
+        [text]="true"
+        severity="success"
+        (onClick)="update()"
+        (onClick)="componentState = 0"
+      ></p-button>
+      <p-button
+        *ngIf="componentState == 1"
+        icon="pi pi-times"
+        [rounded]="true"
+        [text]="true"
+        severity="danger"
+        (onClick)="updateValue = todo"
+        (onClick)="componentState = 0"
+      ></p-button>
+      <!-- Delete Mode / state 2 -->
+      <p-button
+        *ngIf="componentState == 2"
+        icon="pi pi-times"
+        [rounded]="true"
+        [text]="true"
+        severity="info"
+        (onClick)="componentState = 0"
+      ></p-button
+      ><p-button
+        *ngIf="componentState == 2"
+        icon="pi pi-check"
+        [rounded]="true"
+        [text]="true"
+        severity="danger"
+        (onClick)="delete()"
+      ></p-button>
+      <!-- Normal Mode / state 0 -->
+      <p-button
+        *ngIf="componentState == 0"
+        icon="pi pi-pencil"
+        [rounded]="true"
+        [text]="true"
+        severity="info"
+        (onClick)="componentState = 1"
+      ></p-button>
+      <p-button
+        *ngIf="componentState == 0"
+        icon="pi pi-trash"
+        [rounded]="true"
+        [text]="true"
+        severity="danger"
+        (onClick)="componentState = 2"
+      ></p-button>
+    </div>
+  </div>
+  <p *ngIf="todo.body.length > 0 && componentState != 1">
+    {{ todo.body }}
+  </p>
+  <textarea
+    class="mt-2"
+    *ngIf="componentState == 1"
+    rows="5"
+    cols="30"
+    pInputTextarea
+    [autoResize]="true"
+    [(ngModel)]="updateValue.body"
+  >
+  </textarea>
+</div>

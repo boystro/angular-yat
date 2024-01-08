@@ -1,0 +1,16 @@
+.new-todo {
+  display: flex;
+  flex-direction: column;
+}
+
+input, textarea {
+  margin-bottom: 1em;
+}
+
+.head-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  
+}
